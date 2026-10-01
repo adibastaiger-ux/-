@@ -1,1 +1,1397 @@
-# -
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#09050f">
+<title>同学🦌馆 · LeeMouRen</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --bg:#08050d;
+    --bg2:#11091a;
+    --card:rgba(28,16,40,.72);
+    --purple:#9d5cff;
+    --purple2:#d39aff;
+    --pink:#ff5fba;
+    --text:#f7f0ff;
+    --muted:#9c91a8;
+    --line:rgba(190,130,255,.16);
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:
+        Inter,
+        "PingFang SC",
+        "Microsoft YaHei",
+        sans-serif;
+    background:
+        radial-gradient(circle at 20% 10%,rgba(130,45,255,.15),transparent 28%),
+        radial-gradient(circle at 80% 30%,rgba(255,45,180,.10),transparent 25%),
+        linear-gradient(180deg,#09050f 0%,#0c0612 50%,#050308 100%);
+    color:var(--text);
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+/* 背景光 */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    background:
+        linear-gradient(
+            rgba(255,255,255,.015) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.015) 1px,
+            transparent 1px
+        );
+    background-size:55px 55px;
+    mask-image:linear-gradient(to bottom,black,transparent 80%);
+}
+
+/* 导航 */
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    height:72px;
+    z-index:1000;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 7vw;
+    background:rgba(7,4,12,.68);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid var(--line);
+}
+
+.logo{
+    font-size:18px;
+    font-weight:800;
+    letter-spacing:1px;
+}
+
+.logo span{
+    color:var(--purple2);
+}
+
+.nav-links{
+    display:flex;
+    gap:30px;
+}
+
+.nav-links a{
+    color:#c8bdcf;
+    text-decoration:none;
+    font-size:13px;
+    transition:.25s;
+}
+
+.nav-links a:hover{
+    color:white;
+}
+
+/* 通用 */
+section{
+    width:min(1180px,90%);
+    margin:auto;
+}
+
+.hero{
+    min-height:100vh;
+    padding-top:120px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:70px;
+    align-items:center;
+}
+
+.hero-small{
+    color:var(--purple2);
+    font-size:12px;
+    letter-spacing:5px;
+    margin-bottom:22px;
+    text-transform:uppercase;
+}
+
+.hero h1{
+    font-size:clamp(60px,9vw,130px);
+    line-height:.86;
+    letter-spacing:-7px;
+    font-weight:950;
+    background:linear-gradient(
+        110deg,
+        #fff,
+        #cda4ff 45%,
+        #8c4cff
+    );
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.hero-desc{
+    max-width:500px;
+    margin-top:32px;
+    color:#aaa0b3;
+    line-height:1.9;
+    font-size:15px;
+}
+
+.creator{
+    margin-top:32px;
+    font-size:11px;
+    color:#756a80;
+    letter-spacing:4px;
+}
+
+/* 主视觉卡片 */
+.hero-visual{
+    perspective:1200px;
+}
+
+.hero-photo{
+    position:relative;
+    min-height:500px;
+    border-radius:34px;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:45px;
+    cursor:pointer;
+    transform-style:preserve-3d;
+
+    background:
+        radial-gradient(
+            circle at 70% 20%,
+            rgba(196,112,255,.35),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 20% 80%,
+            rgba(255,64,183,.18),
+            transparent 30%
+        ),
+        linear-gradient(
+            145deg,
+            #241035,
+            #0c0711 70%
+        );
+
+    border:1px solid rgba(214,159,255,.3);
+
+    box-shadow:
+        0 40px 100px rgba(0,0,0,.55),
+        inset 0 0 80px rgba(156,80,255,.08);
+
+    transition:
+        transform .15s ease,
+        box-shadow .4s ease;
+}
+
+.hero-photo:hover{
+    box-shadow:
+        0 45px 120px rgba(126,40,255,.25),
+        inset 0 0 100px rgba(156,80,255,.12);
+}
+
+.hero-photo::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        repeating-linear-gradient(
+            120deg,
+            transparent 0 22px,
+            rgba(255,255,255,.025) 23px,
+            transparent 24px
+        );
+    opacity:.45;
+}
+
+.big-qqdd{
+    position:relative;
+    z-index:2;
+    font-size:clamp(65px,10vw,120px);
+    line-height:.8;
+    font-weight:1000;
+    letter-spacing:-8px;
+    color:white;
+    text-shadow:
+        0 0 25px rgba(190,110,255,.6),
+        0 0 80px rgba(150,50,255,.25);
+}
+
+.photo-title{
+    position:relative;
+    z-index:2;
+    margin-top:35px;
+    font-size:clamp(25px,4vw,45px);
+    font-weight:900;
+    line-height:1.05;
+}
+
+.photo-title span{
+    display:block;
+    color:#b777ff;
+}
+
+.photo-bottom{
+    position:relative;
+    z-index:2;
+    margin-top:auto;
+    padding-top:50px;
+    color:#81768b;
+    font-size:10px;
+    letter-spacing:4px;
+}
+
+/* 小装饰 */
+.corner{
+    position:absolute;
+    width:45px;
+    height:45px;
+    border-color:rgba(205,143,255,.7);
+    z-index:3;
+}
+
+.corner.tl{
+    top:25px;
+    left:25px;
+    border-top:1px solid;
+    border-left:1px solid;
+}
+
+.corner.br{
+    bottom:25px;
+    right:25px;
+    border-bottom:1px solid;
+    border-right:1px solid;
+}
+
+/* 标题 */
+.section-title{
+    margin-bottom:55px;
+}
+
+.section-label{
+    color:var(--purple2);
+    font-size:11px;
+    letter-spacing:4px;
+    margin-bottom:15px;
+}
+
+.section-title h2{
+    font-size:clamp(38px,6vw,70px);
+    letter-spacing:-3px;
+}
+
+/* 关于 */
+.about{
+    padding:130px 0;
+}
+
+.about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:80px;
+}
+
+.about-text{
+    color:#a99eaf;
+    line-height:2;
+    font-size:15px;
+}
+
+.about-highlight{
+    border-left:2px solid var(--purple);
+    padding-left:25px;
+    color:#e9dff1;
+}
+
+/* 人物 */
+.people{
+    padding:100px 0 140px;
+}
+
+.people-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+}
+
+.person{
+    position:relative;
+    min-height:300px;
+    padding:25px;
+    border:1px solid var(--line);
+    border-radius:24px;
+    overflow:hidden;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(50,25,70,.75),
+            rgba(15,9,20,.85)
+        );
+    transition:.35s;
+}
+
+.person:hover{
+    transform:translateY(-8px);
+    border-color:rgba(190,120,255,.5);
+    box-shadow:0 25px 70px rgba(90,20,150,.18);
+}
+
+.person-number{
+    font-size:10px;
+    color:#6f6476;
+    letter-spacing:3px;
+}
+
+.person-name{
+    position:absolute;
+    bottom:25px;
+    left:25px;
+    font-size:27px;
+    font-weight:900;
+}
+
+.person-symbol{
+    position:absolute;
+    right:-10px;
+    top:45px;
+    font-size:100px;
+    opacity:.06;
+    font-weight:1000;
+}
+
+/* 数据 */
+.stats{
+    padding:50px 0 140px;
+}
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+}
+
+.stat{
+    padding:45px 25px;
+    text-align:center;
+    border-right:1px solid var(--line);
+}
+
+.stat:last-child{
+    border-right:none;
+}
+
+.stat-number{
+    font-size:clamp(40px,6vw,70px);
+    font-weight:950;
+    background:linear-gradient(120deg,#fff,#9c5cff);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.stat-label{
+    margin-top:10px;
+    color:#817689;
+    font-size:11px;
+    letter-spacing:3px;
+}
+
+/* 互动 */
+.interaction{
+    padding:120px 0;
+}
+
+.interaction-box{
+    position:relative;
+    padding:70px;
+    border-radius:32px;
+    background:
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(165,80,255,.18),
+            transparent 30%
+        ),
+        #110a18;
+    border:1px solid var(--line);
+    text-align:center;
+    overflow:hidden;
+}
+
+.interaction-box h3{
+    font-size:35px;
+    margin-bottom:15px;
+}
+
+.interaction-box p{
+    color:#8f8497;
+    margin-bottom:30px;
+}
+
+button{
+    border:0;
+    cursor:pointer;
+    color:white;
+    background:
+        linear-gradient(
+            100deg,
+            #7c35d6,
+            #bd4ea4
+        );
+    padding:15px 30px;
+    border-radius:999px;
+    font-weight:800;
+    box-shadow:0 15px 40px rgba(130,50,220,.25);
+    transition:.25s;
+}
+
+button:hover{
+    transform:translateY(-3px) scale(1.03);
+}
+
+.quote{
+    margin-top:35px;
+    min-height:30px;
+    color:#d7c8df;
+    font-size:16px;
+}
+
+/* 极致指数 */
+.index{
+    padding:100px 0;
+}
+
+.index-box{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+}
+
+.index-score{
+    font-size:clamp(80px,12vw,150px);
+    font-weight:1000;
+    line-height:.8;
+    background:linear-gradient(120deg,#fff,#a653ff);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.index-info{
+    color:#95899c;
+    line-height:1.9;
+}
+
+.progress{
+    height:8px;
+    background:#21162b;
+    border-radius:999px;
+    overflow:hidden;
+    margin-top:25px;
+}
+
+.progress span{
+    display:block;
+    width:92%;
+    height:100%;
+    background:linear-gradient(90deg,#7434d1,#dc65b7);
+    border-radius:999px;
+}
+
+/* 充能游戏 */
+.game{
+    padding:120px 0;
+}
+
+.game-card{
+    padding:70px 30px;
+    text-align:center;
+    border-radius:35px;
+    border:1px solid var(--line);
+    background:#0f0815;
+}
+
+.energy{
+    width:min(600px,90%);
+    height:18px;
+    margin:35px auto;
+    border-radius:999px;
+    overflow:hidden;
+    background:#24172e;
+}
+
+.energy-fill{
+    width:0%;
+    height:100%;
+    background:linear-gradient(90deg,#7131d0,#ef61bd);
+    transition:.2s;
+}
+
+.energy-text{
+    color:#81768a;
+    font-size:12px;
+    letter-spacing:2px;
+    margin-bottom:25px;
+}
+
+/* 巨型标语 */
+.slogan{
+    width:100%;
+    padding:180px 7vw;
+    text-align:center;
+    overflow:hidden;
+}
+
+.slogan p{
+    font-size:clamp(35px,7vw,90px);
+    font-weight:1000;
+    line-height:1;
+    letter-spacing:-4px;
+    background:
+        linear-gradient(
+            100deg,
+            #fff,
+            #b768ff,
+            #ff6bc4
+        );
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+/* footer */
+footer{
+    padding:50px 7vw;
+    border-top:1px solid var(--line);
+    display:flex;
+    justify-content:space-between;
+    color:#62586a;
+    font-size:10px;
+    letter-spacing:3px;
+}
+
+/* 点击粒子 */
+.particle{
+    position:fixed;
+    pointer-events:none;
+    width:5px;
+    height:5px;
+    border-radius:50%;
+    background:#c477ff;
+    z-index:9999;
+    animation:particle .8s ease-out forwards;
+}
+
+@keyframes particle{
+    to{
+        transform:
+            translate(
+                var(--x),
+                var(--y)
+            )
+            scale(0);
+        opacity:0;
+    }
+}
+
+.shockwave{
+    position:fixed;
+    width:10px;
+    height:10px;
+    border:2px solid #bd73ff;
+    border-radius:50%;
+    pointer-events:none;
+    z-index:9998;
+    transform:translate(-50%,-50%);
+    animation:shock .65s ease-out forwards;
+}
+
+@keyframes shock{
+    to{
+        width:220px;
+        height:220px;
+        opacity:0;
+    }
+}
+
+/* 弹窗 */
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.7);
+    backdrop-filter:blur(10px);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:5000;
+    padding:20px;
+}
+
+.modal.active{
+    display:flex;
+}
+
+.modal-box{
+    width:min(600px,100%);
+    padding:50px;
+    border-radius:30px;
+    background:#140b1d;
+    border:1px solid rgba(205,150,255,.25);
+    text-align:center;
+}
+
+.modal-box h3{
+    font-size:35px;
+    margin-bottom:25px;
+}
+
+.modal-box p{
+    color:#b6a9bc;
+    line-height:1.8;
+    margin-bottom:30px;
+}
+
+/* 手机适配 */
+@media(max-width:850px){
+
+    nav{
+        padding:0 5vw;
+    }
+
+    .nav-links{
+        gap:13px;
+    }
+
+    .nav-links a{
+        font-size:10px;
+    }
+
+    .hero{
+        grid-template-columns:1fr;
+        gap:45px;
+        padding-top:110px;
+    }
+
+    .hero h1{
+        letter-spacing:-5px;
+    }
+
+    .hero-photo{
+        min-height:400px;
+    }
+
+    .about-grid,
+    .index-box{
+        grid-template-columns:1fr;
+        gap:40px;
+    }
+
+    .people-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .stats-grid{
+        grid-template-columns:1fr;
+    }
+
+    .stat{
+        border-right:none;
+        border-bottom:1px solid var(--line);
+    }
+
+    .stat:last-child{
+        border-bottom:none;
+    }
+
+    .interaction-box{
+        padding:45px 25px;
+    }
+
+    .slogan{
+        padding:120px 6vw;
+    }
+
+    footer{
+        flex-direction:column;
+        gap:15px;
+    }
+}
+
+@media(max-width:500px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .hero{
+        width:90%;
+    }
+
+    .hero-photo{
+        padding:30px;
+        min-height:360px;
+        border-radius:25px;
+    }
+
+    .people-grid{
+        grid-template-columns:1fr;
+    }
+
+    .person{
+        min-height:220px;
+    }
+
+    .slogan p{
+        letter-spacing:-2px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- 导航 -->
+<nav>
+    <div class="logo">
+        同学<span>🦌馆</span>
+    </div>
+
+    <div class="nav-links">
+        <a href="#about">关于</a>
+        <a href="#people">成员</a>
+        <a href="#interaction">互动</a>
+        <a href="#game">极致释放</a>
+    </div>
+</nav>
+
+
+<!-- HERO -->
+<section class="hero">
+
+    <div>
+        <div class="hero-small">
+            CLASSMATE ARCHIVE / 2026
+        </div>
+
+        <h1>
+            同学<br>
+            🦌馆
+        </h1>
+
+        <p class="hero-desc">
+            这里没有标准答案。
+            <br>
+            只有四个同学、一些荒诞的瞬间，
+            以及那些值得被永久保存的青春痕迹。
+        </p>
+
+        <div class="creator">
+            CREATED BY LeeMouRen
+        </div>
+    </div>
+
+
+    <div class="hero-visual">
+
+        <div class="hero-photo" id="heroPhoto">
+
+            <div class="corner tl"></div>
+            <div class="corner br"></div>
+
+            <div class="big-qqdd">
+                QQDD
+            </div>
+
+            <div class="photo-title">
+                想看
+                <span>人停服照片</span>
+            </div>
+
+            <div class="photo-bottom">
+                CLICK TO DISCOVER · Q Q D D
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ABOUT -->
+<section class="about" id="about">
+
+    <div class="section-title">
+        <div class="section-label">
+            01 / ABOUT
+        </div>
+
+        <h2>
+            这不是一个<br>
+            普通的网站。
+        </h2>
+    </div>
+
+
+    <div class="about-grid">
+
+        <div class="about-text">
+            <p>
+                同学🦌馆是一份关于青春、同学和那些
+                无法被正常定义的瞬间的数字档案。
+            </p>
+
+            <br>
+
+            <p>
+                我们把平凡的校园生活重新包装，
+                把那些只有我们自己能理解的梗、
+                人和故事留下来。
+            </p>
+        </div>
+
+
+        <div class="about-highlight">
+            <p>
+                有些东西不会因为毕业而消失。
+                <br><br>
+                它们只是从现实里，
+                转移到了记忆里。
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PEOPLE -->
+<section class="people" id="people">
+
+    <div class="section-title">
+
+        <div class="section-label">
+            02 / MEMBERS
+        </div>
+
+        <h2>
+            四个人。
+        </h2>
+
+    </div>
+
+
+    <div class="people-grid">
+
+        <div class="person">
+            <div class="person-number">001</div>
+            <div class="person-symbol">人</div>
+            <div class="person-name">人停服</div>
+        </div>
+
+        <div class="person">
+            <div class="person-number">002</div>
+            <div class="person-symbol">敏</div>
+            <div class="person-name">人敏子</div>
+        </div>
+
+        <div class="person">
+            <div class="person-number">003</div>
+            <div class="person-symbol">鹿</div>
+            <div class="person-name">人鹿强</div>
+        </div>
+
+        <div class="person">
+            <div class="person-number">004</div>
+            <div class="person-symbol">路</div>
+            <div class="person-name">人路邦</div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- STATS -->
+<section class="stats">
+
+    <div class="stats-grid">
+
+        <div class="stat">
+            <div class="stat-number">4</div>
+            <div class="stat-label">核心成员</div>
+        </div>
+
+        <div class="stat">
+            <div class="stat-number">∞</div>
+            <div class="stat-label">离谱瞬间</div>
+        </div>
+
+        <div class="stat">
+            <div class="stat-number">1</div>
+            <div class="stat-label">同学🦌馆</div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- INTERACTION -->
+<section class="interaction" id="interaction">
+
+    <div class="section-title">
+
+        <div class="section-label">
+            03 / INTERACTION
+        </div>
+
+        <h2>
+            随机打开<br>
+            一段记忆。
+        </h2>
+
+    </div>
+
+
+    <div class="interaction-box">
+
+        <h3>
+            命运随机数
+        </h3>
+
+        <p>
+            点击下面的按钮，看看今天会发生什么。
+        </p>
+
+        <button id="quoteBtn">
+            RANDOM MEMORY
+        </button>
+
+        <div class="quote" id="quote">
+            等待命运选择……
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- INDEX -->
+<section class="index">
+
+    <div class="section-title">
+
+        <div class="section-label">
+            04 / INDEX
+        </div>
+
+        <h2>
+            极致指数
+        </h2>
+
+    </div>
+
+
+    <div class="index-box">
+
+        <div>
+            <div class="index-score">
+                92
+            </div>
+
+            <div style="color:#756b7c;margin-top:15px;">
+                / 100
+            </div>
+        </div>
+
+
+        <div class="index-info">
+
+            <p>
+                一个完全没有科学依据，
+                但我们决定相信它的指数。
+            </p>
+
+            <div class="progress">
+                <span></span>
+            </div>
+
+            <p style="margin-top:15px;font-size:11px;">
+                CURRENT EXTREMITY LEVEL · 92%
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- GAME -->
+<section class="game" id="game">
+
+    <div class="section-title">
+
+        <div class="section-label">
+            05 / RELEASE
+        </div>
+
+        <h2>
+            🦌管极致释放
+        </h2>
+
+    </div>
+
+
+    <div class="game-card">
+
+        <div class="energy-text">
+            ENERGY RELEASE
+        </div>
+
+        <div class="energy">
+            <div class="energy-fill" id="energyFill"></div>
+        </div>
+
+        <p id="energyText">
+            点击按钮开始充能
+        </p>
+
+        <br>
+
+        <button id="chargeBtn">
+            极致释放
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- 巨型标语 -->
+<div class="slogan">
+
+    <p>
+        每一次极致🦌管<br>
+        都是对命运不公的愤怒的嘶吼。
+    </p>
+
+</div>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <div>
+        同学🦌馆
+    </div>
+
+    <div>
+        CREATED BY LeeMouRen
+    </div>
+
+</footer>
+
+
+<!-- 弹窗 -->
+<div class="modal" id="modal">
+
+    <div class="modal-box">
+
+        <h3>
+            🦌馆档案
+        </h3>
+
+        <p id="modalText">
+            这里保存着一些无法解释的青春瞬间。
+        </p>
+
+        <button id="closeModal">
+            CLOSE
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   随机语录
+========================= */
+
+const quotes = [
+    "有些事情没有意义，但它发生过。",
+    "青春最奇怪的地方，是当时觉得普通，后来却再也遇不到。",
+    "真正值得保存的，往往不是大事。",
+    "我们都在假装知道自己在干什么。",
+    "今天也没有成为一个正常的人。",
+    "某些瞬间，当时只觉得好笑，后来却记了很久。",
+    "命运没有解释，我们也懒得追问。",
+    "人可以长大，但不能彻底恢复正常。"
+];
+
+const quoteBtn = document.getElementById("quoteBtn");
+const quote = document.getElementById("quote");
+
+quoteBtn.addEventListener("click",()=>{
+
+    const random =
+        quotes[Math.floor(Math.random()*quotes.length)];
+
+    quote.style.opacity="0";
+
+    setTimeout(()=>{
+        quote.textContent=random;
+        quote.style.opacity="1";
+    },180);
+
+});
+
+
+/* =========================
+   充能游戏
+========================= */
+
+const chargeBtn =
+    document.getElementById("chargeBtn");
+
+const energyFill =
+    document.getElementById("energyFill");
+
+const energyText =
+    document.getElementById("energyText");
+
+let energy=0;
+
+chargeBtn.addEventListener("click",()=>{
+
+    energy += Math.floor(Math.random()*8)+5;
+
+    if(energy>100){
+        energy=100;
+    }
+
+    energyFill.style.width=energy+"%";
+
+    if(energy<30){
+        energyText.textContent=
+            "正在积蓄极致能量……";
+    }
+    else if(energy<60){
+        energyText.textContent=
+            "能量正在快速上升……";
+    }
+    else if(energy<90){
+        energyText.textContent=
+            "极致指数突破临界值……";
+    }
+    else if(energy<100){
+        energyText.textContent=
+            "马上就要释放了……";
+    }
+    else{
+        energyText.textContent=
+            "🦌 极致释放完成。";
+        showModal(
+            "恭喜你完成了一次毫无科学依据的极致释放。"
+        );
+    }
+
+});
+
+
+/* =========================
+   弹窗
+========================= */
+
+const modal =
+    document.getElementById("modal");
+
+const modalText =
+    document.getElementById("modalText");
+
+const closeModal =
+    document.getElementById("closeModal");
+
+function showModal(text){
+
+    modalText.textContent=text;
+    modal.classList.add("active");
+
+}
+
+closeModal.addEventListener("click",()=>{
+    modal.classList.remove("active");
+});
+
+modal.addEventListener("click",(e)=>{
+
+    if(e.target===modal){
+        modal.classList.remove("active");
+    }
+
+});
+
+
+/* =========================
+   HERO 3D 倾斜
+========================= */
+
+const heroPhoto =
+    document.getElementById("heroPhoto");
+
+heroPhoto.addEventListener("pointermove",(e)=>{
+
+    const rect =
+        heroPhoto.getBoundingClientRect();
+
+    const x =
+        e.clientX-rect.left;
+
+    const y =
+        e.clientY-rect.top;
+
+    const rotateY =
+        (x/rect.width-.5)*12;
+
+    const rotateX =
+        (y/rect.height-.5)*-12;
+
+    heroPhoto.style.transform=
+        `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+
+});
+
+heroPhoto.addEventListener("pointerleave",()=>{
+
+    heroPhoto.style.transform=
+        "rotateX(0deg) rotateY(0deg)";
+
+});
+
+
+/* =========================
+   点击冲击波 + 粒子
+========================= */
+
+document.addEventListener("pointerdown",(e)=>{
+
+    const wave =
+        document.createElement("div");
+
+    wave.className="shockwave";
+
+    wave.style.left=e.clientX+"px";
+    wave.style.top=e.clientY+"px";
+
+    document.body.appendChild(wave);
+
+    setTimeout(()=>{
+        wave.remove();
+    },700);
+
+
+    for(let i=0;i<8;i++){
+
+        const particle =
+            document.createElement("div");
+
+        particle.className="particle";
+
+        particle.style.left=e.clientX+"px";
+        particle.style.top=e.clientY+"px";
+
+        const angle =
+            Math.random()*Math.PI*2;
+
+        const distance =
+            30+Math.random()*100;
+
+        particle.style.setProperty(
+            "--x",
+            Math.cos(angle)*distance+"px"
+        );
+
+        particle.style.setProperty(
+            "--y",
+            Math.sin(angle)*distance+"px"
+        );
+
+        document.body.appendChild(particle);
+
+        setTimeout(()=>{
+            particle.remove();
+        },850);
+
+    }
+
+});
+
+
+/* =========================
+   HERO 点击
+========================= */
+
+heroPhoto.addEventListener("click",()=>{
+
+    showModal(
+        "QQDD。想看人停服照片？命运表示：还得继续探索。"
+    );
+
+});
+
+
+/* =========================
+   键盘彩蛋
+========================= */
+
+let keySequence="";
+
+document.addEventListener("keydown",(e)=>{
+
+    keySequence += e.key.toLowerCase();
+
+    if(keySequence.length>20){
+        keySequence=
+            keySequence.slice(-20);
+    }
+
+    if(keySequence.includes("qqdd")){
+
+        showModal(
+            "检测到隐藏关键词：QQDD。"
+        );
+
+        keySequence="";
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
